@@ -3,137 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirecting...</title>
+  <title>Info Penting Untuk Kamu</title>
+
+  <!-- INI KUNCINYA BIAR FOTO NONGOL DI FB/IG/WA -->
+  <meta property="og:title" content="Cek Ini Dulu Ya" />
+  <meta property="og:description" content="Klik untuk lanjut ke halaman tujuan" />
+  <meta property="og:image" content="https://res.cloudinary.com/demo/image/upload/sample.jpg" /> <!-- GANTI LINK FOTO CLOUDINARY -->
+  <meta property="og:url" content="https://link-vercel-kamu.vercel.app" /> <!-- GANTI LINK LANDINGPAGE KAMU -->
+  <meta property="og:type" content="website" />
+  
+  <!-- Buat WA dan Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://res.cloudinary.com/demo/image/upload/sample.jpg"> <!-- GANTI JUGA -->
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
-      background-size: 400% 400%;
-      animation: gradient 15s ease infinite;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
+    body, html { height: 100%; font-family: 'Poppins', sans-serif; overflow: hidden; }
+    .bg {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('https://res.cloudinary.com/demo/image/upload/sample.jpg'); /* GANTI LINK FOTO SAMA */
+      background-size: cover; background-position: center;
+      filter: brightness(0.6);
     }
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+    .overlay { position: relative; z-index: 2; height: 100%; display: flex; justify-content: center; align-items: center; padding: 20px; }
     .card {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(25px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 30px;
-      padding: 45px 35px;
-      max-width: 450px;
-      width: 100%;
-      text-align: center;
-      color: #fff;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      animation: fadeIn 0.8s ease;
+      background: rgba(0, 0, 0, 0.55); backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 24px;
+      padding: 40px 35px; max-width: 420px; width: 100%;
+      text-align: center; color: #fff; box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .profile-pic {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid rgba(255,255,255,0.6);
-      margin-bottom: 25px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-    h1 {
-      font-size: 26px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    p {
-      font-size: 15px;
-      opacity: 0.9;
-      margin-bottom: 25px;
-      line-height: 1.6;
-    }
-    .countdown-box {
-      background: rgba(255,255,255,0.2);
-      border-radius: 15px;
-      padding: 15px;
-      margin-bottom: 20px;
-    }
-    .countdown {
-      font-size: 40px;
-      font-weight: 700;
-    }
-    .loader {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 20px 0;
-    }
-    .dot {
-      width: 12px;
-      height: 12px;
-      background: #fff;
-      border-radius: 50%;
-      animation: bounce 1.4s infinite;
-    }
-    .dot:nth-child(2) { animation-delay: 0.2s; }
-    .dot:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes bounce {
-      0%, 80%, 100% { transform: scale(0); }
-      40% { transform: scale(1); }
-    }
-    .btn {
-      display: inline-block;
-      padding: 14px 32px;
-      background: #fff;
-      color: #764ba2;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+    p { font-size: 15px; opacity: 0.9; margin-bottom: 25px; }
+    .countdown { font-size: 50px; font-weight: 700; background: rgba(255,255,255,0.15); border-radius: 16px; padding: 15px; margin-bottom: 20px; }
+    .btn { display: inline-block; padding: 14px 32px; background: #fff; color: #000; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <!-- 1. GANTI LINK FOTO CLOUDINARY DI SINI -->
-    <img src="https://res.cloudinary.com/dl4ijdbe/image/upload/v1783829799/yd149ij5i6ejvwadwulr.jpg" class="profile-pic" alt="Profile">
-
-    <h1>Tunggu Sebentar Ya</h1>
-    <p>Kamu akan diarahkan ke halaman tujuan secara otomatis</p>
-
-    <div class="countdown-box">
+  <div class="bg"></div>
+  <div class="overlay">
+    <div class="card">
+      <h1>Tunggu Sebentar</h1>
+      <p>Kamu akan diarahkan otomatis</p>
       <div class="countdown" id="count">3</div>
+      <a id="redirectBtn" href="#" class="btn">Klik Jika Tidak Otomatis</a>
     </div>
-
-    <div class="loader">
-      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    </div>
-
-    <!-- 2. GANTI LINK TUJUAN DI SINI -->
-    <a id="redirectBtn" href="#" class="btn">Klik Jika Tidak Otomatis</a>
   </div>
 
   <script>
-    // CONFIG
     const redirectUrl = "https://instagram.com"; // GANTI LINK TUJUAN
     let timeLeft = 3;
-
     document.getElementById("redirectBtn").href = redirectUrl;
-
     const timer = setInterval(() => {
       timeLeft--;
       document.getElementById("count").innerText = timeLeft;
